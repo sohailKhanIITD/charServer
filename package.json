@@ -1,0 +1,25 @@
+{
+  "name": "chat",
+  "version": "0.0.0",
+  "description": "chat",
+  "main": "server.js",
+  "author": "sohail",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "license": "ISC",
+  "dependencies": {
+    "bluebird": "^3.7.1",
+    "body-parser": "^1.19.0",
+    "ejs": "^2.7.1",
+    "express": "^4.17.1",
+    "express-session": "^1.17.0",
+    "http": "0.0.0",
+    "mongodb": "^3.3.3",
+    "mongoose": "^5.7.5",
+    "passport": "^0.4.0",
+    "passport-local": "^1.0.0",
+    "passport-local-mongoose": "^5.0.1",
+    "socket.io": "^2.3.0"
+  }
+}

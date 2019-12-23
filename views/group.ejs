@@ -1,0 +1,113 @@
+﻿<% include ../partials/header.ejs %>
+<script src="../js/socket.io.js"></script>
+<style>
+    #chat-box{
+        overflow: scroll;
+        height: 100%;
+        background-color: white;
+    }
+    .chat{
+        padding-left: 1%;
+        padding-right: 1%;
+    }
+    #active-user{
+        width: 15%;
+        margin: 0;
+    }
+    #chat-info{
+        margin: 0;
+        padding: 5px;
+        width: 85%;
+    }
+    .row{
+        margin: 0;
+    }
+    ul{
+        margin: 0;
+        padding: 5px;
+    }
+    #active-user{
+        overflow: scroll;
+    }
+    hr{
+        margin: 10px;
+    }
+</style>
+<% include ../partials/header2.ejs %>
+
+<div class="row">
+    <div id="active-user">
+        <ul id="user-list">
+        </ul>
+    </div>
+    <div id="chat-info">
+        <div id="chat-box" class="border">
+            <div id="chat_room"></div>
+        </div>
+        <div class="div1 input-group input-group-lg">
+            <input id="chat_message" type="text" class="form-control" placeholder="Message" aria-describedby="basic-addon2" />
+            <div class="input-group-append">
+                <button type="button" id="button" class="btn btn-outline-secondary">Send</button>
+            </div>
+        </div>
+    </div>
+</div>
+    <script>
+        var username = <%-JSON.stringify(username) %>;
+        var room = <%-JSON.stringify(room) %>;
+        var colors = ['red', 'blue', 'darkred', 'darkgreen', 'teal', 'royalblue', 'darkslateblue', 'darkorchid', 'goldenrod'];
+        var s = 0;
+        window.onload = function () {
+
+            var chatBox = document.querySelector('#chat-box');
+            var chatInfo = document.querySelector('#chat-info');
+            var h = chatInfo.offsetTop;
+            var bodyheight = window.innerHeight;
+            var messageBox = document.querySelector('#chat_message');
+            var messageBoxHeight = document.querySelector('.div1').offsetHeight;
+            chatInfo.style.height = (bodyheight - h - messageBoxHeight) + "px";
+            //chatBox.style.height = window.innerHeight+"px";
+            //console.log(window.innerHeigh
+            var socket = io();
+            var sendButton = document.querySelector('#button');
+            var chatRoom = document.querySelector('#chat_room');
+            var userList = document.querySelector('#user-list');
+            socket.emit('room', { room: room, username: username });
+
+            messageBox.addEventListener("keyup",function (event) {
+                if (event.keyCode == 13) {
+                    sendButton.click();
+                }
+            })
+
+            sendButton.addEventListener("click", function () {
+                if (messageBox.value === "") return;
+                var msg = messageBox.value;
+                messageBox.value = "";
+                socket.emit('chat message', { username: username, room: room, message: msg });
+                return false;
+            });
+            socket.on('chat message', function (data) {
+                console.log(data);
+                chatRoom.innerHTML = chatRoom.innerHTML + "<p style='margin: 0; color:" + colors[s] + ";'><b>&nbsp;" + data.username + "</b>: " + data.message + "</p><hr>";
+                chatBox.scrollTop = chatBox.scrollHeight;
+                s = (s + 1) % 9;
+            });
+            socket.on('add user', function (data) {
+                userList.innerHTML = "";
+                var li;
+                data.users.forEach(function (user) {
+                    li = document.createElement("li");
+                    li.appendChild(document.createTextNode(user));
+                    li.className = "font-weight-bold list-group-item list-group-item-action";
+                    li.style.padding = "4px";
+                    li.style.color = "green";
+                    userList.appendChild(li);
+                })
+            });
+            socket.on('delete user', function (data) {
+
+            });
+        }
+    </script>
+<% include ../partials/footer.ejs %>

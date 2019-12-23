@@ -1,0 +1,35 @@
+﻿<% include ../partials/header.ejs %>
+<style>
+    .container {
+        margin-top: 20px;
+        max-width: 600px;
+        min-width: 100px;
+    }
+    #success{
+        color: blue;
+    }
+    #failure{
+        color: red;
+    }
+</style>
+<% include ../partials/header2.ejs %>
+<div class="container">
+    <% if(code==1){ %>
+        <p id="success"><%=message%></p>
+    <% } %>
+    <% if(code==2){ %>
+        <p id="failure"><%=message%></p>
+    <% } %>
+    <% if(groups.length>0) { %>
+    <h2>Enter Group </h2>
+    <% groups.forEach(function(group){ %>
+        <a style="text-decoration:none" href="/group/<%=group%>"><li class="font-weight-bold list-group-item list-group-item-action"><%=group%></li></a>
+    <% }) %>
+    <% }else{ %>
+        <h3>You are not part of any group yet :(</h3>
+    <% } %>
+</div>
+<script>
+    window.history.pushState("", "", '/index');
+</script>
+<% include ../partials/footer.ejs %>

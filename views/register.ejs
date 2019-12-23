@@ -1,0 +1,35 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <style>
+        .container{
+            min-width: 100px;
+            max-width: 600px;
+            margin-top: 60px;
+        }
+    </style>
+</head>
+<body class="bg-light">
+    <div class="container">
+        <div class="form-box">
+            <h3 class="align-top">Register</h3>
+            <form action="/register" method="POST">
+                <div class="input-group input-group-sm mb-3">
+                    <input class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" type="text" name="username" placeholder="USERNAME" />
+                </div>
+                <div class="input-group input-group-sm mb-3">
+                    <input class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" type="password" name="password" placeholder="PASSWORD" />
+                </div>
+                <div class="form-group">
+                    <button type="submit" class="btn btn-outline-info" id="button">SUBMIT</button>
+                </div>
+            </form>
+            <a href="/login">Already a member? Login</a>
+        </div>
+    <div>
+</body>
+</html>

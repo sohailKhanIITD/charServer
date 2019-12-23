@@ -1,0 +1,31 @@
+﻿.navbar-brand{
+    font-size: 1rem;
+    margin: 0px;
+    margin-right: 20px;
+}
+
+body {
+    padding-top: 51px;
+}
+
+.create-icon{
+    font-size: small;
+}
+
+#nav-bar-button {
+    margin-left: 1em;
+    width: 100px;
+    font-weight: bold;
+    border: solid 1px #204060;
+    color: #204060;
+    font-size: 0.7em;
+}
+
+#nav-bar-button:hover{
+    color: white;
+    background: #204060;
+}
+
+.navbar-margin{
+    margin-top: 1500px;
+}

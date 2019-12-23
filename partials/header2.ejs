@@ -1,0 +1,27 @@
+</head>
+<body class="bg-light"> 
+
+    <nav class="fixed-top shadow-sm mb-5 bg-white rounded navbar navbar-light">
+        <a href="/index">
+            <div class="navbar-brand">
+                <img src="/images/logo.png" width="25" height="25" class="d-inline-block align-top" alt="">
+                ChatServer
+            </div>
+        </a>
+        <div class="navbar-nav mr-auto d-inline-block">
+            <a href="/group/create" class="font-weight-bold create-icon nav-item btn">
+                <img src="/images/create.png" width="15" height="15" class="d-inline-block align-top" alt="">
+                CREATE
+            </a>
+            <a href="/group/join" class="font-weight-bold create-icon nav-item btn">
+                <img src="/images/join.png" width="22" height="22" class="d-inline-block align-top" alt="">
+                JOIN
+            </a>
+        </div>
+        <div class="flex-row-reverse bd-highlight">
+            <div class="navbar-nav flex-row-reverse">
+                <a id="nav-bar-button" class="btn btn-sm nav-item nav-link" href="/logout">Sign Out</a>
+                <%=username%>
+            </div>
+        </div>
+    </nav>

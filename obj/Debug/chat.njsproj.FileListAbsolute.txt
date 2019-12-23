@@ -1,0 +1,3 @@
+D:\chat\chat\obj\Debug\chat.njsprojAssemblyReference.cache
+D:\chat\chat\obj\Debug\chat.njsproj.CoreCompileInputs.cache
+D:\chat\chat\bin\Microsoft.NodejsTools.WebRole.dll

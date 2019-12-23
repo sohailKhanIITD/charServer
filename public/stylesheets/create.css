@@ -1,0 +1,16 @@
+.container{
+    background-color: white;
+    margin-top: 30px;
+    padding: 20px;
+}
+
+#submit-button {
+    font-weight: bold;
+    border: solid 1px #204060;
+    color: #204060;
+}
+
+#submit-button:hover {
+    color: white;
+    background: #204060;
+}
